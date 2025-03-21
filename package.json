@@ -3,13 +3,18 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "start": "node index.js",
+    "test": "npx playwright test",
+    "report": "npx playwright show-report"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "playwright": "^1.39.0"
   },
+  
   "devDependencies": {
     "@playwright/test": "^1.39.0",
     "@types/node": "^20.8.9"

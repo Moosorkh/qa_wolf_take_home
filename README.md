@@ -1,55 +1,108 @@
-# 🐺 QA Wolf Take Home Assignment
+# 🐺 QA Wolf Take-Home Assignment - Hacker News Validation
 
-Welcome to the QA Wolf take home assignment for our [QA Engineer](https://www.task-wolf.com/apply-qae) role! We appreciate your interest and look forward to seeing what you come up with.
+## Overview
 
-## Instructions
+This project validates that the first 100 articles on Hacker News' "newest" page are correctly sorted from newest to oldest by timestamp. It uses Microsoft's Playwright framework to automate browser interactions and implements comprehensive validation, reporting, and error handling.
 
-This assignment has two questions as outlined below. When you are done, upload your assignment to our [application page](https://www.task-wolf.com/apply-qae):
+## Features
 
+- ✅ Validates timestamp-based sorting across multiple pages
+- 📊 Generates detailed HTML reports of validation results
+- 🔍 Provides clear error messages for sorting inconsistencies
+- 📱 Configurable browser settings (headless/headed mode)
+- 🧩 Modular, well-documented code structure
 
-### Question 1
+## Project Structure
 
-In this assignment, you will create a script on [Hacker News](https://news.ycombinator.com/) using JavaScript and Microsoft's [Playwright](https://playwright.dev/) framework. 
+```
+qa_wolf_take_home/
+├── index.js                    # Main validation script
+├── config.js                   # Configuration settings
+├── package.json                # Node.js package definition
+├── package-lock.json           # Dependency lock file
+├── README.md                   # Project documentation
+├── utils/                      # Utility modules
+│   ├── article-parser.js       # Article data extraction
+│   ├── validation.js           # Sorting validation logic
+│   └── reporter.js             # Reporting utilities
+├── reports/                    # Generated reports (auto-created)
+└── playwright.config.js        # Playwright configuration
+```
 
-1. Install node modules by running `npm i`.
+## Prerequisites
+```
+- Node.js (v14+)
+- npm or yarn
+```
+## Installation
 
-2. Edit the `index.js` file in this project to go to [Hacker News/newest](https://news.ycombinator.com/newest) and validate that EXACTLY the first 100 articles are sorted from newest to oldest. You can run your script with the `node index.js` command.
+1. Clone the repository
+2. Install dependencies:
+```
+npm install
+```
 
-Note that you are welcome to update Playwright or install other packages as you see fit, however you must utilize Playwright in this assignment.
+## Usage
 
-### Question 2
+### Run the validation script:
 
-Why do you want to work at QA Wolf? Please record a short, ~2 min video using [Loom](https://www.loom.com/) that includes:
+```
+node index.js
+```
 
-1. Your answer 
+The script will:
+1. Launch a browser window
+2. Navigate to Hacker News' newest articles page
+3. Fetch the first 100 articles (paginating as needed)
+4. Validate that articles are sorted from newest to oldest
+5. Generate an HTML report of the results
+6. Log results to the console
 
-2. A walk-through demonstration of your code, showing a successful execution
+## Configuration
 
-The answer and walkthrough should be combined into *one* video, and must be recorded using Loom as the submission page only accepts Loom links.
+### You can modify test behavior by editing `config.js`:
 
-## Frequently Asked Questions
+- `articlesCount`: Number of articles to validate
+- `browser.headless`: Run in headless mode (true/false)
+- `browser.slowMo`: Slow down operations by specified milliseconds
 
-### What is your hiring process? When will I hear about next steps?
+## Reporting
 
-This take home assignment is the first step in our hiring process, followed by a final round interview if it goes well. **We review every take home assignment submission and promise to get back to you either way within one week (usually sooner).** The only caveat is if we are out of the office, in which case we will get back to you when we return. If it has been more than one week and you have not heard from us, please do follow up.
+After each run, an HTML report is generated in the `reports/` directory showing:
+- Overall pass/fail status
+- Article list with timestamps
+- Detailed information about any sorting issues found
 
-The final round interview is a 2-hour technical work session that reflects what it is like to work here. We provide a $150 stipend for your time for the final round interview regardless of how it goes. After that, there may be a short chat with our director about your experience and the role.
+## Development
 
-Our hiring process is rolling where we review candidates until we have filled our openings. If there are no openings left, we will keep your contact information on file and reach out when we are hiring again.
+### Adding New Features
 
-### Having trouble uploading your assignment?
-Be sure to delete you `node_modules`, then zip your assignment folder prior to upload. 
+The codebase is modular and follows JSDoc documentation standards for clarity. To extend functionality:
 
-### How do you decide who to hire?
+1. Update utility modules in the `utils/` directory
+2. Modify the main `index.js` script to use the new features
+3. Update tests as needed
 
-We evaluate candidates based on three criteria:
+### Testing
 
-- Technical ability (as demonstrated in the take home and final round)
-- Customer service orientation (as this role is customer facing)
-- Alignment with our values (captured [here](https://www.notion.so/qawolf/QA-Wolf-QA-Engineer-Remote-156203a1e476459ea5e6ffca972d0efe))
+To ensure your changes maintain validation accuracy by testing with various browser configurations:
 
-This means whether we hire you is based on how you do during our interview process, not on your previous experience (or lack thereof). Note that you will also need to pass a background check to work here as our customers require this.
+Run with visible browser
+```
+node index.js
+```
+Edit config.js to run in headless mode
+Then run again
+```
+node index.js
+```
 
-### How can I help my application stand out?
+## Troubleshooting
 
-We've found that our best hires have been the most enthusiastic throughout our process. If you are very excited about working here, please feel free to go above and beyond on this assignment.
+- **Navigation Timeout**: Increase timeout values in `config.js`
+- **Parsing Errors**: Check the article structure on Hacker News for changes
+- **Browser Launch Failure**: Ensure Playwright browsers are installed with `npx playwright install`
+
+## License
+
+This project is licensed under the ISC License - see the LICENSE file for details.

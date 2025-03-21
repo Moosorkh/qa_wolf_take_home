@@ -1,0 +1,8 @@
+# Create a .dockerignore file with these contents
+node_modules
+npm-debug.log
+reports
+screenshots
+videos
+.git
+.DS_Store

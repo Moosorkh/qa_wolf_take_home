@@ -5,18 +5,18 @@
  * @version 1.0.0
  */
 
-import { existsSync, mkdirSync, writeFileSync } from 'fs';
-import { join } from 'path';
+const fs = require('fs');
+const path = require('path');
 
 /**
  * Output directory for reports
  * @constant {string}
  */
-const REPORTS_DIR = join(__dirname, '../reports');
+const REPORTS_DIR = path.join(__dirname, '../reports');
 
 // Ensure reports directory exists
-if (!existsSync(REPORTS_DIR)) {
-  mkdirSync(REPORTS_DIR, { recursive: true });
+if (!fs.existsSync(REPORTS_DIR)) {
+  fs.mkdirSync(REPORTS_DIR, { recursive: true });
 }
 
 /**
@@ -30,7 +30,7 @@ if (!existsSync(REPORTS_DIR)) {
  * @returns {Promise<string>} Path to the generated report file
  */
 async function generateHtmlReport(articles, issues, summary) {
-  const reportPath = join(REPORTS_DIR, `validation-report-${Date.now()}.html`);
+  const reportPath = path.join(REPORTS_DIR, `validation-report-${Date.now()}.html`);
   
   // Generate HTML content (simplified example)
   const htmlContent = `
@@ -95,7 +95,7 @@ async function generateHtmlReport(articles, issues, summary) {
   `;
   
   // Write to file
-  writeFileSync(reportPath, htmlContent);
+  fs.writeFileSync(reportPath, htmlContent);
   console.log(`Report saved to ${reportPath}`);
   
   return reportPath;
@@ -128,7 +128,7 @@ function logResults(issues, summary) {
   }
 }
 
-export default {
+module.exports = {
   generateHtmlReport,
   logResults
 };

@@ -10,7 +10,7 @@
 
 const { chromium } = require("playwright");
 const config = require("./config");
-//const { parseArticleElements } = require("./utils/article-parser");
+//const { parseArticleElements } = require("./utils/article-parser"); will use page.$$eval instead
 const { validateArticleSorting, generateValidationSummary } = require("./utils/validation");
 const { generateHtmlReport, logResults } = require("./utils/reporter");
 

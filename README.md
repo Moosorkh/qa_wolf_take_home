@@ -157,5 +157,8 @@ node index.js
 - Extended validation for other aspects of Hacker News
 - Integration with monitoring systems
 
+## GitHub
+- GitHub: https://github.com/Moosorkh/qa_wolf_take_home.git
+
 ## License
 N/A

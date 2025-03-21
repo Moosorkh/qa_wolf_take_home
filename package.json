@@ -1,5 +1,5 @@
 {
-  "name": "qa_wolf_take_home",
+  "name": "qa_wolf_take_home_mehdi_azar",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,7 +9,7 @@
     "report": "npx playwright show-report"
   },
   "keywords": [],
-  "author": "",
+  "author": "Mehdi Azar",
   "license": "ISC",
   "dependencies": {
     "playwright": "^1.39.0"

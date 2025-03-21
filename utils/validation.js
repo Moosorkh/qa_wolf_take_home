@@ -49,7 +49,7 @@ function validateArticleSorting(articles) {
     };
   }
   
-  module.exports = {
+  export default {
     validateArticleSorting,
     generateValidationSummary
   };

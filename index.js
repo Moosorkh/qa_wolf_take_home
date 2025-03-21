@@ -8,11 +8,11 @@
  * @version 1.0.0
  */
 
-const { chromium } = require("playwright");
-const config = require("./config");
-const { parseArticleElements } = require("./utils/article-parser");
-const { validateArticleSorting, generateValidationSummary } = require("./utils/validation");
-const { generateHtmlReport, logResults } = require("./utils/reporter");
+import { chromium } from "playwright";
+import { browser as _browser, newestUrl, articlesCount } from "./config";
+// import { parseArticleElements } from "./utils/article-parser"; using page.$$eval() instead
+import { validateArticleSorting, generateValidationSummary } from "./utils/validation";
+import { generateHtmlReport, logResults } from "./utils/reporter";
 
 /**
  * Fetches newest articles from Hacker News
@@ -98,19 +98,19 @@ async function main() {
   
   // Start a visible browser
   const browser = await chromium.launch({ 
-    headless: config.browser.headless,
-    slowMo: config.browser.slowMo
+    headless: _browser.headless,
+    slowMo: _browser.slowMo
   });
   const context = await browser.newContext();
   const page = await context.newPage();
 
   try {
     // Go to Hacker News newest page
-    await page.goto(config.newestUrl);
+    await page.goto(newestUrl);
     console.log("Opened Hacker News newest page");
 
     // Get the articles
-    const articles = await fetchNewestArticles(page, config.articlesCount);
+    const articles = await fetchNewestArticles(page, articlesCount);
     console.log(`Successfully collected ${articles.length} articles`);
 
     // Check if they're correctly sorted

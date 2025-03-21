@@ -1,7 +1,7 @@
 /**
  * @fileoverview Validation utilities for HackerNews sorting check
  * 
- * @author Your Name
+ * @author Mehdi Azar
  * @version 1.0.0
  */
 

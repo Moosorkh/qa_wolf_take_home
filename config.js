@@ -1,7 +1,7 @@
 /**
  * @fileoverview Configuration for HackerNews validation tests
  * 
- * @author Your Name
+ * @author Mehdi Azar
  * @version 1.0.0
  */
 

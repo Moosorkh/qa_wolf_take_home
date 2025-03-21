@@ -1,7 +1,7 @@
 /**
  * @fileoverview Reporter utilities for HackerNews validation
  * 
- * @author Your Name
+ * @author Mehdi Azar
  * @version 1.0.0
  */
 

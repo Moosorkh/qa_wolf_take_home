@@ -4,7 +4,7 @@
  * Configuration for Playwright test runner to enable auto-generated tests
  * and multi-browser testing capabilities.
  * 
- * @author Your Name
+ * @author Mehdi Azar
  * @version 1.0.0
  * @see https://playwright.dev/docs/test-configuration
  */
